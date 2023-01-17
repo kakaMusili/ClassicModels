@@ -6,6 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import io.jotech.banksystem.subsystems.CreditRatingService;
+import io.jotech.banksystem.subsystems.InterBankPolicyService;
+import io.jotech.banksystem.subsystems.RepaymentPayabilityService;
+import io.jotech.banksystem.subsystems.RepaymentService;
+import io.jotech.banksystem.subsystems.TransferService;
 import io.jotech.classicmodels.entity.Customer;
 
 class BankSystemTest {
@@ -15,7 +20,14 @@ class BankSystemTest {
     @BeforeEach
             public  void setup()
     {
-        bankSystem=new BankSystem();
+        CreditRatingService creditRatingService= new CreditRatingService();
+        InterBankPolicyService interBankPolicyService= new InterBankPolicyService();
+        RepaymentPayabilityService repaymentPayabilityService= new RepaymentPayabilityService();
+        RepaymentService repaymentService= new RepaymentService();
+        TransferService transferService= new TransferService();
+
+        /* bankSystem=new BankSystem( creditRatingService, interBankPolicyService, repaymentService,
+                repaymentPayabilityService, transferService); */
     }
 
     @Test
@@ -34,7 +46,7 @@ class BankSystemTest {
                 .build();
 
         //when
-        bankSystem= new BankSystem();
+       // bankSystem= new BankSystem();
 
         boolean isProsessed= bankSystem.processLoanApplication(customer,principal, income, months);
 

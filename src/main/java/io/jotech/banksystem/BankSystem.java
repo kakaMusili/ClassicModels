@@ -8,18 +8,40 @@ import io.jotech.banksystem.subsystems.RepaymentPayabilityService;
 import io.jotech.banksystem.subsystems.RepaymentService;
 import io.jotech.banksystem.subsystems.TransferService;
 import io.jotech.classicmodels.entity.Customer;
+import jakarta.inject.Inject;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+
+//@RequiredArgsConstructor
 
 public class BankSystem {
+    @Inject
+    private   CreditRatingService creditRatingService;
 
-    CreditRatingService creditRatingService = new CreditRatingService();
+    @Inject
+    private   InterBankPolicyService interBankPolicyService;
 
-    InterBankPolicyService interBankPolicyService = new InterBankPolicyService();
+    @Inject
+    private   RepaymentService repaymentService;
 
-    RepaymentService repaymentService = new RepaymentService();
+    @Inject
+    private   RepaymentPayabilityService repaymentPayabilityService;
 
-    RepaymentPayabilityService repaymentPayabilityService = new RepaymentPayabilityService();
+    @Inject
+    private    TransferService transferService;
 
-    TransferService transferService = new TransferService();
+   /*  public BankSystem(CreditRatingService creditRatingService, InterBankPolicyService interBankPolicyService,
+                      RepaymentService repaymentService, RepaymentPayabilityService repaymentPayabilityService, TransferService transferService) {
+
+        this.creditRatingService=creditRatingService;
+        this.interBankPolicyService=interBankPolicyService;
+        this.repaymentService=repaymentService;
+        this.repaymentPayabilityService=repaymentPayabilityService;
+        this.
+
+    } */
+
 
     public boolean processLoanApplication(Customer customer,
                                           BigDecimal principal,
